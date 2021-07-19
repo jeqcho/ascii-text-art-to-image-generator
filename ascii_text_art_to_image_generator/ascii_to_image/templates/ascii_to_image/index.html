@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>ASCII text art to image converter</title>
+    <style>
+        #ascii-art-text {
+        font-family: 'Courier New', monospace;
+        }
+    
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>ASCII text art to image converter</h1>
+    <form action="/ascii-to-image/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% load static %}
+        <div class="form-group">
+            <label for="ascii-art-text">Enter ASCII art text:</label>
+            <textarea class="form-control" required id="ascii-art-text" name="ascii-art-text" rows="10"
+                      placeholder="{% include 'ascii_to_image/duck.txt' %}">{{ text }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Convert to image</button>
+    </form>
+</div>
+<div class="container mt-5">
+    <h2>Converted images</h2>
+    {% if converted %}
+    <h3>Detailed ASCII</h3>
+    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-0.png" alt="Converted ascii text to image 1">
+    
+    <h3>Standard gray ramp</h3>
+    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-1.png" alt="Converted ascii text to image 2">
+    
+    <h3>Alternative</h3>
+    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-2.png" alt="Converted ascii text to image 3">
+    {% endif %}
+</div>
+<div class="container mt-5 mb-5">
+    External link: <a href="https://manytools.org/hacker-tools/convert-images-to-ascii-art/">Convert images to ASCII art</a>
+</div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
