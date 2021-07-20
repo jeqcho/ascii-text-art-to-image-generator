@@ -33,7 +33,6 @@ def index(request):
         "error": error,
         "paths": paths,
         "text": text,
-        "hashed_txt": hashed_txt,
         "converted": converted
     }
     return render(request, 'ascii_to_image/index.html', context)
