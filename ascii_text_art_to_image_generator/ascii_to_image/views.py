@@ -15,8 +15,8 @@ def index(request):
         if text == '':
             error = "ASCII text art cannot be empty."
         else:
-            num_rows = len(text)
-            num_cols = max([len(row) for row in text])
+            num_rows = len(text.split('\n'))
+            num_cols = max([len(row) for row in text.split('\n')])
             if num_rows > 500:
                 error = "Too many rows (max 500)"
             elif num_cols > 300:
