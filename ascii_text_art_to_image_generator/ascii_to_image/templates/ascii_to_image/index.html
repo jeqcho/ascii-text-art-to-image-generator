@@ -20,8 +20,8 @@
         {% load static %}
         <div class="form-group">
             <label for="ascii-art-text">Enter ASCII art text:</label>
-            <textarea class="form-control" required id="ascii-art-text" name="ascii-art-text" rows="10"
-                      placeholder="{% include 'ascii_to_image/duck.txt' %}">{{ text }}</textarea>
+            <textarea class="form-control" required id="ascii-art-text" name="ascii-art-text"
+                      rows="10">{{ text }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Convert to image</button>
     </form>
