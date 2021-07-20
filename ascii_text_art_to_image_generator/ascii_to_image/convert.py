@@ -1,4 +1,5 @@
 from PIL import Image
+import io
 
 
 def convert_ascii_to_image(ascii_content, ramp_choice=0):
@@ -37,4 +38,6 @@ def convert_ascii_to_image(ascii_content, ramp_choice=0):
                 for j in range(tile_width):
                     pix[col_idx*tile_width+j, row_idx*tile_height+i] = int(luminosity)
 
-    return im
+    b = io.BytesIO()
+    im.save(b, "PNG")
+    return b

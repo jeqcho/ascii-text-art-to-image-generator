@@ -30,13 +30,13 @@
     <h2>Converted images</h2>
     {% if converted %}
     <h3>Detailed ASCII</h3>
-    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-0.png" alt="Converted ascii text to image 1">
+    <img class="img-thumbnail" src="{{ paths.0 }}" alt="Converted ascii text to image 1">
     
     <h3>Standard gray ramp</h3>
-    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-1.png" alt="Converted ascii text to image 2">
+    <img class="img-thumbnail" src="{{ paths.1 }}" alt="Converted ascii text to image 2">
     
     <h3>Alternative</h3>
-    <img class="img-thumbnail" src="{% static ''%}/ascii_to_image/output-{{ hashed_txt }}-2.png" alt="Converted ascii text to image 3">
+    <img class="img-thumbnail" src="{{ paths.2 }}" alt="Converted ascii text to image 3">
     {% endif %}
 </div>
 <div class="container mt-5 mb-5">
