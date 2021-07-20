@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .convert import convert_ascii_to_image
+from django.conf import settings
 
 
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
         hashed_txt = hash(text)
         for i in range(3):
             im = convert_ascii_to_image(text, i)
-            im.save('ascii_to_image/static/ascii_to_image/output-' + str(hashed_txt) + '-' + str(i) + '.png')
+            im.save(settings.STATIC_ROOT+'/ascii_to_image/output-' + str(hashed_txt) + '-' + str(i) + '.png')
         converted = True
     context = {
         "text": text,
