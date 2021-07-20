@@ -17,8 +17,8 @@ def index(request):
         else:
             num_rows = len(text.split('\n'))
             num_cols = max([len(row) for row in text.split('\n')])
-            if num_rows > 500:
-                error = "Too many rows (max 500)"
+            if num_rows > 200:
+                error = "Too many rows (max 200)"
             elif num_cols > 300:
                 error = "Too many columns (max 300)"
         if error == '':
