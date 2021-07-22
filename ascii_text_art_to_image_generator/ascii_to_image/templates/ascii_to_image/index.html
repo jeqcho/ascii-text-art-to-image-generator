@@ -14,7 +14,7 @@
 <body>
 <div class="container mt-5">
     <h1>ASCII text art to image converter</h1>
-    <form action="/ascii-to-image/" method="POST" enctype="multipart/form-data">
+    <form id="ascii-input-form" action="/ascii-to-image/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% load static %}
         <div class="form-group">
@@ -22,7 +22,7 @@
             <textarea class="form-control" required id="ascii-art-text" name="ascii-art-text"
                       rows="10">{{ text }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Convert to image</button>
+        <button id="submit" type="submit" class="btn btn-primary">Convert to image</button>
     </form>
 </div>
 <div class="container mt-5">
@@ -68,5 +68,12 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById("ascii-input-form").addEventListener('submit',function(){
+    document.getElementById("submit").disabled=true;
+    document.getElementById("submit").innerHTML="Converting..";
+    });
+
+</script>
 </body>
 </html>
