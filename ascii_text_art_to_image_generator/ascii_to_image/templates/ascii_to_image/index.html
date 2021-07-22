@@ -26,6 +26,7 @@
                       rows="10">{{ text }}</textarea>
         </div>
         <button id="submit" type="submit" class="btn btn-primary">Convert to image</button>
+        <button id="clear" type="button" class="btn btn-outline-danger">Clear ASCII input</button>
     </form>
 </div>
 <div class="container mt-5">
@@ -58,9 +59,12 @@
     </ol>
     Note that there is a whitespace at the end for all ASCII gray ramps.
     </p>
-    <p>External link: <a target="_blank" href="https://manytools.org/hacker-tools/convert-images-to-ascii-art/">Convert
-        images to ASCII
-        art</a></p>
+    <h2>External Links</h2>
+    <p>Convert images to ASCII art: <a target="_blank"
+                                       href="https://manytools.org/hacker-tools/convert-images-to-ascii-art/">manytools</a>
+    </p>
+    <p>Code: <a target="_blank" href="https://github.com/jeqcho/ascii-text-art-to-image-generator">GitHub</a></p>
+    <p>Home page: <a target="_blank" href="https://chojeq.com">Chojeq</a></p>
 </div>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -75,8 +79,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.getElementById("ascii-input-form").addEventListener('submit',function(){
-    document.getElementById("submit").disabled=true;
-    document.getElementById("submit").innerHTML="Converting..";
+        document.getElementById("submit").disabled=true;
+        document.getElementById("submit").innerHTML="Converting...";
+    });
+    document.getElementById("clear").addEventListener('click',function(){
+        document.getElementById("ascii-art-text").innerHTML='';
     });
 
 </script>
