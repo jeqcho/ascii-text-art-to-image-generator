@@ -12,14 +12,32 @@
         code {
             white-space: pre;
         }
+    
     </style>
 </head>
 <body>
 <div class="container mt-5">
     <h1>ASCII text art to image converter</h1>
+    <p>This tool converts your ASCII text art to a grayscale PNG image.</p>
+    <div class="row container">
+        {% load static %}
+        <div class="col-sm-6">
+            <figure class="figure">
+                <img src="{% static 'ascii_to_image/ascii-duck.png' %}" class="figure-img img-thumbnail"
+                     alt="ASCII text art of a duck">
+                <figcaption class="figure-caption">ASCII text art of a duck.</figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-6">
+            <figure class="figure">
+                <img src="{% static 'ascii_to_image/png-duck.png' %}" class="figure-img img-thumbnail"
+                     alt="Successful conversion of a ASCII duck into image">
+                <figcaption class="figure-caption">PNG image of a duck.</figcaption>
+            </figure>
+        </div>
+    </div>
     <form id="ascii-input-form" action="/ascii-to-image/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {% load static %}
         <div class="form-group">
             <label for="ascii-art-text">Enter ASCII art text:</label>
             <textarea class="form-control" required id="ascii-art-text" name="ascii-art-text"
@@ -35,13 +53,13 @@
     <p class="text-danger">Error: {{ error }}</p>
     {% elif converted %}
     <h3>Detailed ASCII</h3>
-    <img class="img-thumbnail" src="{{ paths.0 }}" alt="Converted ascii text to image 1">
+    <img class="img-thumbnail" src="{{ paths.0 }}" alt="Converted ascii text to image using detailed ASCII">
 
     <h3>Standard gray ramp</h3>
-    <img class="img-thumbnail" src="{{ paths.1 }}" alt="Converted ascii text to image 2">
+    <img class="img-thumbnail" src="{{ paths.1 }}" alt="Converted ascii text to image using standard gray ramp">
 
     <h3>Alternative</h3>
-    <img class="img-thumbnail" src="{{ paths.2 }}" alt="Converted ascii text to image 3">
+    <img class="img-thumbnail" src="{{ paths.2 }}" alt="Converted ascii text to image using alternative gray ramp">
     {% else %}
     <p>Converted ASCII images show here.</p>
     {% endif %}
@@ -63,8 +81,9 @@
     <p>Convert images to ASCII art: <a target="_blank"
                                        href="https://manytools.org/hacker-tools/convert-images-to-ascii-art/">manytools</a>
     </p>
-    <p>Code: <a target="_blank" href="https://github.com/jeqcho/ascii-text-art-to-image-generator">GitHub</a></p>
-    <p>Home page: <a target="_blank" href="https://chojeq.com">Chojeq</a></p>
+    <p>Code: <a target="_blank" href="https://github.com/jeqcho/ascii-text-art-to-image-generator">GitHub(ascii-text-art-to-image-generator)</a>
+    </p>
+    <p>Home page: <a target="_blank" href="https://chojeq.com">Chojeq.com</a></p>
 </div>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -85,6 +104,7 @@
     document.getElementById("clear").addEventListener('click',function(){
         document.getElementById("ascii-art-text").innerHTML='';
     });
+
 
 </script>
 </body>
